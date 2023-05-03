@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    String url_api_view = "http://csucl.com/csucl.com/glynn/cpu/api.php?apicall=view";
+    String url_api_view = "http://stul66.csucl.com/CPU/api.php?apicall=view";
 
     FloatingActionButton fab;
 
@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jsonDecoder(String json_string) {
-
         try {
             json_string = json_string.substring(json_string.indexOf("{"));
             ListView listView = (ListView) findViewById(R.id.listView);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject object = array.getJSONObject(i);
                 Lead newLead = new Lead(
-                        object.getString("id"),
+                        object.getString("Lead_ID"),
                         object.getString("source"),
                         object.getString("status"),
                         object.getString("type"));
