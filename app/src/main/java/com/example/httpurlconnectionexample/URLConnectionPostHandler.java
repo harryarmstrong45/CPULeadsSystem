@@ -5,9 +5,11 @@ import android.os.AsyncTask;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Extract from AsyncTask documentation
@@ -53,10 +55,11 @@ import java.net.URL;
  * The task can be executed only once (an exception will be thrown if a second execution is
  * attempted.)
  */
-public class URLConnectionGetHandler extends AsyncTask<Object, Void, Object> {
-    DataDownloadListener dataDownloadListener;
+public class URLConnectionPostHandler extends AsyncTask<Object, String, Object> {
 
-    public void setDataDownloadListener(DataDownloadListener dataDownloadListener) {
+    URLConnectionPostHandler.DataDownloadListener dataDownloadListener;
+
+    public void setDataDownloadListener(URLConnectionPostHandler.DataDownloadListener dataDownloadListener) {
         this.dataDownloadListener = dataDownloadListener;
     }
 
@@ -67,10 +70,26 @@ public class URLConnectionGetHandler extends AsyncTask<Object, Void, Object> {
         try {
             url = new URL(param[0].toString());
             urlConnection = (HttpURLConnection) url.openConnection();
-            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            String result = null;
-            result = br.readLine();
-            return result;
+
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoOutput(true);
+
+            try (OutputStream os = urlConnection.getOutputStream()) {
+                os.write(param[1].toString().getBytes());
+                os.flush();
+                os.close();
+            }
+
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                return response.toString();
+            }
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
