@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter adapter;
 
-    String url_api_view = "http://stul66.csucl.com/CPU/api.php?apicall=view";
+    String url_api_view = "http://stul61.csucl.com/CPU/api.php?apicall=view";
 
     FloatingActionButton fab;
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class NewLeadActivity extends AppCompatActivity {
 
-    String url_insert_lead = "http://csucl.com/csucl.com/glynn/cpu/api.php?apicall=insert";
+    String url_insert_lead = "http://stul61.csucl.com/CPU/api.php?apicall=insertIntoTable";
     Spinner spinner_source, spinner_status, spinner_type;
 
     Button button_submit;
@@ -93,6 +93,8 @@ public class NewLeadActivity extends AppCompatActivity {
         paramString.append(spinner_status.getItemAtPosition(spinner_status.getSelectedItemPosition()).toString());
         paramString.append("&typeoflead=");
         paramString.append(spinner_type.getItemAtPosition(spinner_type.getSelectedItemPosition()).toString());
+        paramString.append("&linkedinprofile=N/A");
+        paramString.append("&role=1234");
         return paramString.toString();
     }
 
