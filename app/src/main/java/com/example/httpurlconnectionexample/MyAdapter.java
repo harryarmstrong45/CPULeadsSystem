@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
-    private List<String> data;
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    private List<Lead> data;
 
-    public Adapter(List<String> data) {
+    public MyAdapter(List<Lead> data) {
         this.data = data;
     }
 
@@ -24,7 +24,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String text = data.get(position);
+        String text = data.get(position).toString();
         holder.textView.setText(text);
     }
 

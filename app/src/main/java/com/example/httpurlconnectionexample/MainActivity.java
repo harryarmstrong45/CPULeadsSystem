@@ -1,10 +1,7 @@
 package com.example.httpurlconnectionexample;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
-    private Adapter adapter;
-    String url_api_view = "http://stul66.csucl.com/CPU/api.php?apicall=view"; //Adapter call for PHP case
+    private MyAdapter adapter;
+
+    String url_api_view = "http://stul66.csucl.com/CPU/api.php?apicall=view";
 
     FloatingActionButton fab;
 
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
             recyclerView = (RecyclerView) this.findViewById(R.id.Lead_RCV);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            List<String> items = new ArrayList<>();
+
+            List<Lead> items = new ArrayList<>();
             JSONObject root = new JSONObject(json_string);
 
             JSONArray array = root.getJSONArray("leads");
@@ -82,10 +83,19 @@ public class MainActivity extends AppCompatActivity {
                         object.getString("Lead_ID"),
                         object.getString("source"),
                         object.getString("status"),
-                        object.getString("type"));
-                items.add(newLead.toString());
+                        object.getString("reason_disqualified"),
+                        object.getString("type"),
+                        object.getString("vendor_id"),
+                        object.getString("linkedin"),
+                        object.getString("role"),
+                        object.getString("rating"),
+                        object.getString("company_id")
+                );
+                items.add(newLead);
             }
-            adapter = new Adapter(items);
+
+            adapter = new MyAdapter(items);
+
             if (recyclerView != null) {
                 recyclerView.setAdapter(adapter);
             }
