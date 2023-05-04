@@ -39,4 +39,44 @@ public class Lead {
                 "rating = " + rating + '\n' +
                 "company_id = " + company_id ;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getReason_disqualified() {
+        return reason_disqualified;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getVendor_id() {
+        return vendor_id;
+    }
+
+    public String getLinkedin() {
+        return linkedin;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public String getCompany_id() {
+        return company_id;
+    }
 }
