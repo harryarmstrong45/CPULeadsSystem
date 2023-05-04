@@ -1,14 +1,15 @@
 package com.example.httpurlconnectionexample;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,8 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    String url_api_view = "http://stul66.csucl.com/CPU/api.php?apicall=view";
+    private RecyclerView recyclerView;
+    private Adapter adapter;
+    String url_api_view = "http://stul66.csucl.com/CPU/api.php?apicall=view"; //Adapter call for PHP case
 
     FloatingActionButton fab;
 
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onResume() {
         super.onResume();
-            ViewLeads();
+        ViewLeads();
     }
 
     private void ViewLeads() {
@@ -64,10 +65,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jsonDecoder(String json_string) {
+
         try {
             json_string = json_string.substring(json_string.indexOf("{"));
-            ListView listView = (ListView) findViewById(R.id.listView);
 
+            recyclerView = (RecyclerView) this.findViewById(R.id.Lead_RCV);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
             List<String> items = new ArrayList<>();
             JSONObject root = new JSONObject(json_string);
 
@@ -82,12 +85,9 @@ public class MainActivity extends AppCompatActivity {
                         object.getString("type"));
                 items.add(newLead.toString());
             }
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, items);
-
-            if (listView != null) {
-                listView.setAdapter(adapter);
+            adapter = new Adapter(items);
+            if (recyclerView != null) {
+                recyclerView.setAdapter(adapter);
             }
 
         } catch (JSONException e) {
