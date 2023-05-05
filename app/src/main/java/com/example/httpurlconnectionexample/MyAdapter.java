@@ -25,14 +25,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.source_Txt_V.setText(data.get(position).getSource());
-        holder.status_Txt_V.setText(data.get(position).getStatus());
-        holder.reason_Txt_V.setText(data.get(position).getReason_disqualified());
-        holder.type_Txt_V.setText(data.get(position).getType());
-        holder.linkedin_Txt_V.setText(data.get(position).getLinkedin());
-        holder.role_Txt_V.setText(data.get(position).getRole());
-        holder.rating_Txt_V.setText(data.get(position).getRating());
-        holder.id_Txt_V.setText("Lead: "+data.get(position).getId());
+        holder.source_Textview.setText(data.get(position).getSource());
+        holder.status_Textview.setText(data.get(position).getStatus());
+        holder.reasondq_TextView.setText(data.get(position).getReason_disqualified());
+        holder.type_Textview.setText(data.get(position).getType());
+        holder.linkedin_Textview.setText(data.get(position).getLinkedin());
+        holder.role_Textview.setText(data.get(position).getRole());
+        holder.rating_TextView.setText(data.get(position).getRating());
+        holder.id_Textview.setText("Lead: "+data.get(position).getId());
     }
 
     @Override
@@ -41,25 +41,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView source_Txt_V;
-        public TextView status_Txt_V;
-        public TextView reason_Txt_V;
-        public TextView type_Txt_V;
-        public TextView linkedin_Txt_V;
-        public TextView role_Txt_V;
-        public TextView rating_Txt_V;
-        public TextView id_Txt_V;
 
+        public TextView source_Textview, status_Textview, reasondq_TextView, type_Textview, linkedin_Textview, role_Textview, rating_TextView, id_Textview;
         public MyViewHolder(View itemView) {
             super(itemView);
-            source_Txt_V = (TextView) itemView.findViewById(R.id.source_textview);
-            status_Txt_V = (TextView) itemView.findViewById(R.id.status_textview);
-            reason_Txt_V = (TextView) itemView.findViewById(R.id.reason_disqualified_textview);
-            type_Txt_V = (TextView) itemView.findViewById(R.id.type_textview);
-            linkedin_Txt_V = (TextView) itemView.findViewById(R.id.linkedin_textview);
-            role_Txt_V = (TextView) itemView.findViewById(R.id.role_textview);
-            rating_Txt_V = (TextView) itemView.findViewById(R.id.rating_textview);
-            id_Txt_V = (TextView) itemView.findViewById(R.id.lead_title_textview);
+            source_Textview = (TextView) itemView.findViewById(R.id.source_textview);
+            status_Textview = (TextView) itemView.findViewById(R.id.status_textview);
+            reasondq_TextView = (TextView) itemView.findViewById(R.id.reason_disqualified_textview);
+            type_Textview = (TextView) itemView.findViewById(R.id.type_textview);
+            linkedin_Textview = (TextView) itemView.findViewById(R.id.linkedin_textview);
+            role_Textview = (TextView) itemView.findViewById(R.id.role_textview);
+            rating_TextView = (TextView) itemView.findViewById(R.id.rating_textview);
+            id_Textview = (TextView) itemView.findViewById(R.id.lead_title_textview);
         }
     }
 }

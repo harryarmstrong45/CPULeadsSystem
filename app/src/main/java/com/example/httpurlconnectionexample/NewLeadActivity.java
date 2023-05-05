@@ -46,7 +46,7 @@ public class NewLeadActivity extends AppCompatActivity {
 
                     @Override
                     public void dataDownloadFailed() {
-                        Toast.makeText(NewLeadActivity.this, "Record not added.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewLeadActivity.this, R.string.record_not_added, Toast.LENGTH_SHORT).show();
                     }
                 });
                 uRLConnectionPostHandler.execute(url_insert_lead, generateParameters());
@@ -72,31 +72,29 @@ public class NewLeadActivity extends AppCompatActivity {
         types.add("educational");
         types.add("domestic");
 
+        setSpinnerAdapter(sources, spinner_source);
+
+        setSpinnerAdapter(status, spinner_status);
+
+        setSpinnerAdapter(types, spinner_type);
+    }
+
+    private void setSpinnerAdapter(List<String> sources, Spinner spinner_source) {
         ArrayAdapter<String> dataAdapterSources = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sources);
         dataAdapterSources.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_source.setAdapter(dataAdapterSources);
-
-        ArrayAdapter<String> dataAdapterStatus = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, status);
-        dataAdapterStatus.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_status.setAdapter(dataAdapterStatus);
-
-        ArrayAdapter<String> dataAdapterTypes = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, types);
-        dataAdapterTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_type.setAdapter(dataAdapterTypes);
     }
 
     private String generateParameters() {
         StringBuilder paramString = new StringBuilder();
-        paramString.append("source=");
+        paramString.append(getString(R.string.source));
         paramString.append(spinner_source.getItemAtPosition(spinner_source.getSelectedItemPosition()).toString());
-        paramString.append("&status=");
+        paramString.append(getString(R.string.status));
         paramString.append(spinner_status.getItemAtPosition(spinner_status.getSelectedItemPosition()).toString());
-        paramString.append("&typeoflead=");
+        paramString.append(getString(R.string.typeoflead));
         paramString.append(spinner_type.getItemAtPosition(spinner_type.getSelectedItemPosition()).toString());
-        paramString.append("&linkedinprofile=N/A");
-        paramString.append("&role=1234");
+        paramString.append(getString(R.string.linkedinprofile_n_a));
+        paramString.append(getString(R.string.role_1234));
         return paramString.toString();
     }
-
-
 }

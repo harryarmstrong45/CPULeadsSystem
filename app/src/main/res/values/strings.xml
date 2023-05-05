@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">HttpURLConnectionExample</string>
+    <string name="record_not_added">Record not added.</string>
+    <string name="source">source=</string>
+    <string name="status"><![CDATA[&status=]]></string>
+    <string name="typeoflead"><![CDATA[&typeoflead=]]></string>
+    <string name="linkedinprofile_n_a"><![CDATA[&linkedinprofile=N/A]]></string>
+    <string name="role_1234"><![CDATA[&role=1234]]></string>
 </resources>
