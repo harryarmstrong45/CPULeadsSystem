@@ -1,9 +1,17 @@
 package com.example.httpurlconnectionexample;
 
 
-public class Lead {
-    private String id, source, status, reason_disqualified, type, vendor_id, linkedin, role, rating, company_id;
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
+public class Lead implements Serializable {
+    private String id, source, status, reason_disqualified, type, vendor_id, linkedin, role, rating, company_id;
+    private List<String> sources = Arrays.asList("Website", "Telephone", "Email");
+    private List<String> statuses = Arrays.asList("New", "Working", "Qualified", "Disqualified", "Customer");
+    private List<String> types = Arrays.asList("Commercial", "Educational", "Domestic");
+    private List<String> roles = Arrays.asList("IT", "Marketing", "Sales");
+    private List<String> ratings = Arrays.asList("A", "B", "C", "D");
 
     public Lead(String id, String source, String status, String reason_disqualified, String type, String vendor_id, String linkedin, String role, String rating, String company_id) {
         this.id = id;
@@ -17,6 +25,8 @@ public class Lead {
         this.rating = rating;
         this.company_id = company_id;
     }
+
+    public Lead () {}
     @Override
     public String toString() {
         return "Lead " + '\n' +
@@ -30,6 +40,46 @@ public class Lead {
                 "role = " + role + '\n' +
                 "rating = " + rating + '\n' +
                 "company_id = " + company_id ;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setReason_disqualified(String reason_disqualified) {
+        this.reason_disqualified = reason_disqualified;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setVendor_id(String vendor_id) {
+        this.vendor_id = vendor_id;
+    }
+
+    public void setLinkedin(String linkedin) {
+        this.linkedin = linkedin;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public void setCompany_id(String company_id) {
+        this.company_id = company_id;
     }
 
     //Getter for ID
@@ -80,5 +130,25 @@ public class Lead {
     //Getter for Company
     public String getCompany_id() {
         return company_id;
+    }
+
+    public List<String> getSources() {
+        return sources;
+    }
+
+    public List<String> getStatuses() {
+        return statuses;
+    }
+
+    public List<String> getTypes() {
+        return types;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public List<String> getRatings() {
+        return ratings;
     }
 }

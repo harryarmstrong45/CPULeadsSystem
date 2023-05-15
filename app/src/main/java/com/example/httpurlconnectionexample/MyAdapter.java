@@ -1,9 +1,11 @@
 package com.example.httpurlconnectionexample;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +35,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.role_Textview.setText(data.get(position).getRole());
         holder.rating_TextView.setText(data.get(position).getRating());
         holder.id_Textview.setText("Lead: "+data.get(position).getId());
+
+        holder.button_edit.setOnClickListener(v -> {
+            Lead lead = data.get(position);
+            Intent intent = new Intent(v.getContext(), NewUpdateLeadActivity.class);
+            //Passing the lead object to new activity
+            intent.putExtra("selected_lead", lead);
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -43,16 +53,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView source_Textview, status_Textview, reasondq_TextView, type_Textview, linkedin_Textview, role_Textview, rating_TextView, id_Textview;
+        public Button button_edit, button_convert;
         public MyViewHolder(View itemView) {
             super(itemView);
-            source_Textview = (TextView) itemView.findViewById(R.id.source_textview);
-            status_Textview = (TextView) itemView.findViewById(R.id.status_textview);
-            reasondq_TextView = (TextView) itemView.findViewById(R.id.reason_disqualified_textview);
-            type_Textview = (TextView) itemView.findViewById(R.id.type_textview);
-            linkedin_Textview = (TextView) itemView.findViewById(R.id.linkedin_textview);
-            role_Textview = (TextView) itemView.findViewById(R.id.role_textview);
-            rating_TextView = (TextView) itemView.findViewById(R.id.rating_textview);
-            id_Textview = (TextView) itemView.findViewById(R.id.lead_title_textview);
+            source_Textview = itemView.findViewById(R.id.source_textview);
+            status_Textview = itemView.findViewById(R.id.status_textview);
+            reasondq_TextView = itemView.findViewById(R.id.reason_disqualified_textview);
+            type_Textview = itemView.findViewById(R.id.type_textview);
+            linkedin_Textview = itemView.findViewById(R.id.linkedin_textview);
+            role_Textview = itemView.findViewById(R.id.role_textview);
+            rating_TextView = itemView.findViewById(R.id.rating_textview);
+            id_Textview = itemView.findViewById(R.id.lead_title_textview);
+            button_edit = itemView.findViewById(R.id.button_edit);
+            button_convert = itemView.findViewById(R.id.button_convert);
         }
     }
 }

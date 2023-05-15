@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".NewLeadActivity"
+            android:name=".NewUpdateLeadActivity"
             android:exported="true">
         </activity>
         <activity
