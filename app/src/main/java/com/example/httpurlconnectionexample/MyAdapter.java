@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<Lead> data;
+    private String API_URL = API.getApiUrl(API.CONVERT_LEAD);
 
     public MyAdapter(List<Lead> data) {
         this.data = data;
@@ -42,6 +44,23 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             //Passing the lead object to new activity
             intent.putExtra("selected_lead", lead);
             v.getContext().startActivity(intent);
+        });
+
+        holder.button_convert.setOnClickListener(v -> {
+            URLConnectionPostHandler urlConnectionPostHandler = new URLConnectionPostHandler();
+            urlConnectionPostHandler.setDataDownloadListener(new URLConnectionPostHandler.DataDownloadListener() {
+                @Override
+                public void dataDownloadedSuccessfully(Object data) {
+                    // Handle successful result
+                    Toast.makeText(v.getContext(), data.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void dataDownloadFailed() {
+                    Toast.makeText(v.getContext(), "Error in API", Toast.LENGTH_SHORT).show();
+                }
+            });
+            urlConnectionPostHandler.execute(API_URL, "Lead_ID=" + data.get(position).getId());
         });
     }
 
