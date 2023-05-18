@@ -21,11 +21,10 @@ import java.util.List;
  */
 public class NewUpdateLeadActivity extends AppCompatActivity {
 
-    private String url_insert_lead = "http://stul61.csucl.com/CPU/api.php?apicall=insertIntoTable";
+    private final String url_insert_lead = "http://stul61.csucl.com/CPU/api.php?apicall=insertIntoTable";
     private Spinner spinner_source, spinner_status, spinner_type, spinner_role, spinner_rating;
     private EditText linkedin, reason_disqualified;
     private Lead lead;
-    private Button button_submit;
     private String API_URL;
 
     @Override
@@ -40,7 +39,7 @@ public class NewUpdateLeadActivity extends AppCompatActivity {
         spinner_type = findViewById(R.id.spinner_type);
         spinner_rating = findViewById(R.id.spinner_rating);
         spinner_role = findViewById(R.id.spinner_role);
-        button_submit = findViewById(R.id.button_submit);
+        Button button_submit = findViewById(R.id.button_submit);
         linkedin = findViewById(R.id.editText_linkedIn);
         reason_disqualified = findViewById(R.id.editText_ReasonDis);
 

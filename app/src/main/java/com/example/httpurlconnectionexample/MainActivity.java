@@ -20,9 +20,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private RecyclerView recyclerView;
-    private MyAdapter adapter;
-
     String url_api_view = API.getApiUrl(API.VIEW_TABLE);
 
     FloatingActionButton fab;
@@ -79,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             json_string = json_string.substring(json_string.indexOf("{"));
 
-            recyclerView = (RecyclerView) this.findViewById(R.id.Lead_RCV);
+            RecyclerView recyclerView = (RecyclerView) this.findViewById(R.id.Lead_RCV);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
             List<Lead> items = new ArrayList<>();
@@ -104,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 items.add(newLead);
             }
 
-            adapter = new MyAdapter(items);
+            MyAdapter adapter = new MyAdapter(items);
 
             if (recyclerView != null) {
                 recyclerView.setAdapter(adapter);

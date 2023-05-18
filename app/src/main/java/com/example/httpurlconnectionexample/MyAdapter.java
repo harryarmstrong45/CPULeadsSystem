@@ -16,8 +16,8 @@ import java.util.List;
  Custom RecyclerView adapter for displaying a list of Lead objects.
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private List<Lead> data;
-    private String API_URL = API.getApiUrl(API.CONVERT_LEAD);
+    private final List<Lead> data;
+    private final String API_URL = API.getApiUrl(API.CONVERT_LEAD);
 
     /**
      Constructs a new MyAdapter with the specified data.

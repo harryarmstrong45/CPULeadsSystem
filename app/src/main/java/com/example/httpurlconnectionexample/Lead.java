@@ -11,11 +11,11 @@ public class Lead implements Serializable {
      Represents a Lead object.
      */
     private String id, source, status, reason_disqualified, type, vendor_id, linkedin, role, rating, company_id;
-    private List<String> sources = Arrays.asList("Website", "Telephone", "Email");
-    private List<String> statuses = Arrays.asList("New", "Working", "Qualified", "Disqualified", "Customer");
-    private List<String> types = Arrays.asList("Commercial", "Educational", "Domestic");
-    private List<String> roles = Arrays.asList("IT", "Marketing", "Sales");
-    private List<String> ratings = Arrays.asList("A", "B", "C", "D");
+    private final List<String> sources = Arrays.asList("Website", "Telephone", "Email");
+    private final List<String> statuses = Arrays.asList("New", "Working", "Qualified", "Disqualified", "Customer");
+    private final List<String> types = Arrays.asList("Commercial", "Educational", "Domestic");
+    private final List<String> roles = Arrays.asList("IT", "Marketing", "Sales");
+    private final List<String> ratings = Arrays.asList("A", "B", "C", "D");
 
     /**
      Constructs a new Lead object with the specified attributes.
