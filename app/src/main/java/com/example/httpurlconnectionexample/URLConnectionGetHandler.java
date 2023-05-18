@@ -55,7 +55,10 @@ import java.net.URL;
  */
 public class URLConnectionGetHandler extends AsyncTask<Object, Void, Object> {
     DataDownloadListener dataDownloadListener;
-
+    /**
+     Sets the data download listener for receiving the results of the GET request.
+     @param dataDownloadListener Waiting for download of data to begin.
+     */
     public void setDataDownloadListener(DataDownloadListener dataDownloadListener) {
         this.dataDownloadListener = dataDownloadListener;
     }
@@ -65,8 +68,11 @@ public class URLConnectionGetHandler extends AsyncTask<Object, Void, Object> {
         URL url = null;
         HttpURLConnection urlConnection = null;
         try {
+            // Create URL object
             url = new URL(param[0].toString());
+            // Open connection
             urlConnection = (HttpURLConnection) url.openConnection();
+            // Read data from input stream
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String result = null;
             result = br.readLine();
@@ -76,6 +82,7 @@ public class URLConnectionGetHandler extends AsyncTask<Object, Void, Object> {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // Disconnect the URL connection
             urlConnection.disconnect();
         }
         return null;
@@ -84,15 +91,25 @@ public class URLConnectionGetHandler extends AsyncTask<Object, Void, Object> {
     @Override
     protected void onPostExecute(Object results) {
         if (results != null) {
+            // Call the data download listener on successful result
             dataDownloadListener.dataDownloadedSuccessfully(results);
         } else {
+            // Calls download failed function if download fails
             dataDownloadListener.dataDownloadFailed();
         }
     }
-
+    /**
+     Listener interface for receiving the results of the GET request.
+     **/
     public interface DataDownloadListener {
+        /**
+        Called when the data is downloaded successfully.
+        @param data The downloaded data.
+        **/
         void dataDownloadedSuccessfully(Object data);
-
+        /**
+         Called when the data download fails.
+         */
         void dataDownloadFailed();
     }
 }

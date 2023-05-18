@@ -12,23 +12,31 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-
+/**
+ Custom RecyclerView adapter for displaying a list of Lead objects.
+ */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<Lead> data;
     private String API_URL = API.getApiUrl(API.CONVERT_LEAD);
 
+    /**
+     Constructs a new MyAdapter with the specified data.
+     @param data The list of Lead objects to be displayed.
+     */
     public MyAdapter(List<Lead> data) {
         this.data = data;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // Inflate the layout for each item in the RecyclerView
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_layout, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        // Bind the data to the views in the ViewHolder
         holder.source_Textview.setText(data.get(position).getSource());
         holder.status_Textview.setText(data.get(position).getStatus());
         holder.reasondq_TextView.setText(data.get(position).getReason_disqualified());
@@ -37,7 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.role_Textview.setText(data.get(position).getRole());
         holder.rating_TextView.setText(data.get(position).getRating());
         holder.id_Textview.setText("Lead: "+data.get(position).getId());
-
+        // Set click listener for the edit button
         holder.button_edit.setOnClickListener(v -> {
             Lead lead = data.get(position);
             Intent intent = new Intent(v.getContext(), NewUpdateLeadActivity.class);
@@ -57,6 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 @Override
                 public void dataDownloadFailed() {
+                    // Handle unsuccessful result
                     Toast.makeText(v.getContext(), "Error in API", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -68,11 +77,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public int getItemCount() {
         return data.size();
     }
-
+    /**
+     ViewHolder class for caching the views of each item in the RecyclerView.
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView source_Textview, status_Textview, reasondq_TextView, type_Textview, linkedin_Textview, role_Textview, rating_TextView, id_Textview;
         public Button button_edit, button_convert;
+        /**
+         Constructs a new MyViewHolder with the specified itemView.
+         @param itemView The view representing each item in the RecyclerView.
+         */
         public MyViewHolder(View itemView) {
             super(itemView);
             source_Textview = itemView.findViewById(R.id.source_textview);

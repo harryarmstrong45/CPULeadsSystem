@@ -58,7 +58,10 @@ import java.nio.charset.StandardCharsets;
 public class URLConnectionPostHandler extends AsyncTask<Object, String, Object> {
 
     URLConnectionPostHandler.DataDownloadListener dataDownloadListener;
-
+    /**
+     Sets the data download listener for receiving the results of the POST request.
+     @param dataDownloadListener The data download listener.
+     */
     public void setDataDownloadListener(URLConnectionPostHandler.DataDownloadListener dataDownloadListener) {
         this.dataDownloadListener = dataDownloadListener;
     }
@@ -68,18 +71,21 @@ public class URLConnectionPostHandler extends AsyncTask<Object, String, Object> 
         URL url = null;
         HttpURLConnection urlConnection = null;
         try {
+            // Create URL object
             url = new URL(param[0].toString());
+            // Open connection
             urlConnection = (HttpURLConnection) url.openConnection();
 
+            // Set request method to POST
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoOutput(true);
-
+            // Write POST data
             try (OutputStream os = urlConnection.getOutputStream()) {
                 os.write(param[1].toString().getBytes());
                 os.flush();
                 os.close();
             }
-
+            // Read response
             try (BufferedReader br = new BufferedReader(
                     new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8))) {
                 StringBuilder response = new StringBuilder();
@@ -95,6 +101,7 @@ public class URLConnectionPostHandler extends AsyncTask<Object, String, Object> 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            // Disconnect the URL connection
             urlConnection.disconnect();
         }
         return null;
@@ -109,9 +116,16 @@ public class URLConnectionPostHandler extends AsyncTask<Object, String, Object> 
         }
     }
 
+    /**
+     Listener interface for receiving the results of the POST request.
+     */
     public interface DataDownloadListener {
+        /**
+        Called when the data is downloaded successfully.
+        @param data The downloaded data.
+        */
         void dataDownloadedSuccessfully(Object data);
-
+         // -Called when the data download fails.
         void dataDownloadFailed();
     }
 }

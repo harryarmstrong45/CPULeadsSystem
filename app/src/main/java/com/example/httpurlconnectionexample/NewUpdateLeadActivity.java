@@ -16,6 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ Activity for creating or updating a Lead.
+ */
 public class NewUpdateLeadActivity extends AppCompatActivity {
 
     private String url_insert_lead = "http://stul61.csucl.com/CPU/api.php?apicall=insertIntoTable";
@@ -69,20 +72,20 @@ public class NewUpdateLeadActivity extends AppCompatActivity {
 
         populateSpinners();
 
-        //button
+        //Set onclick listner
         button_submit.setOnClickListener(v -> {
             setUpdateLead();
             URLConnectionPostHandler uRLConnectionPostHandler = new URLConnectionPostHandler();
             uRLConnectionPostHandler.setDataDownloadListener(new URLConnectionPostHandler.DataDownloadListener() {
                 @Override
                 public void dataDownloadedSuccessfully(Object data) {
-                    // handler result
-                    //TODO: Write a check for successful result
+                    // Handles successful results
                     Toast.makeText(NewUpdateLeadActivity.this, data.toString(), Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
                 public void dataDownloadFailed() {
+                    // Handles unsuccessful results
                     Toast.makeText(NewUpdateLeadActivity.this, R.string.record_not_added, Toast.LENGTH_SHORT).show();
                 }
             });
@@ -134,7 +137,11 @@ public class NewUpdateLeadActivity extends AppCompatActivity {
         dataAdapterSources.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_source.setAdapter(dataAdapterSources);
     }
-
+    /**
+     Generates the parameters string for the API request.
+     @param inputLead The lead object containing the data to be sent.
+     @return The generated parameters string.
+     */
     private String generateParameters(Lead inputLead) {
         StringBuilder paramString = new StringBuilder();
         paramString.append("Lead_ID=");

@@ -19,13 +19,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private RecyclerView recyclerView;
     private MyAdapter adapter;
 
-    String url_api_view = "http://stul61.csucl.com/CPU/api.php?apicall=view";
+    String url_api_view = API.getApiUrl(API.VIEW_TABLE);
 
     FloatingActionButton fab;
 
+    /**
+     * Resumes the activity after it has been tabbed out off or stopped in anyway
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +44,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     public void onResume() {
         super.onResume();
         ViewLeads();
     }
 
+    /**
+     * Gets all leads from the API, puts them in a JSON decoder and converts them to a string.
+     */
     private void ViewLeads() {
         URLConnectionGetHandler uRLConnectionGetHandler = new URLConnectionGetHandler();
         uRLConnectionGetHandler.setDataDownloadListener(new URLConnectionGetHandler.DataDownloadListener() {
@@ -64,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         uRLConnectionGetHandler.execute(url_api_view);
     }
 
+    /**
+     * JSON Decoder for the API Data, creates a new JSON object with data from the API
+     * @param json_string String of data downloaded from API
+     */
     public void jsonDecoder(String json_string) {
 
         try {
