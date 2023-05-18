@@ -151,11 +151,11 @@ public class NewUpdateLeadActivity extends AppCompatActivity {
         paramString.append(inputLead.getStatus());
         paramString.append("&reason_disqualified");
         paramString.append(inputLead.getReason_disqualified());
-        paramString.append("&typeoflead=");
+        paramString.append("&type=");
         paramString.append(inputLead.getType());
         paramString.append("&role=");
         paramString.append(inputLead.getRole());
-        paramString.append("&linkedinprofile=");
+        paramString.append("&linkedin=");
         paramString.append(inputLead.getLinkedin());
         paramString.append("&rating=");
         paramString.append(inputLead.getRating());
