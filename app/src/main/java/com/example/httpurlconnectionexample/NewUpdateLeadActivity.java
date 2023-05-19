@@ -68,10 +68,9 @@ public class NewUpdateLeadActivity extends AppCompatActivity {
             API_URL = API.getApiUrl(API.INSERT_IN_ROW);
         }
 
-
         populateSpinners();
 
-        //Set onclick listner
+        //Set onclick listener
         button_submit.setOnClickListener(v -> {
             setUpdateLead();
             URLConnectionPostHandler uRLConnectionPostHandler = new URLConnectionPostHandler();
@@ -132,7 +131,7 @@ public class NewUpdateLeadActivity extends AppCompatActivity {
     }
 
     private void setSpinnerAdapter(List<String> sources, Spinner spinner_source) {
-        ArrayAdapter<String> dataAdapterSources = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sources);
+        ArrayAdapter<String> dataAdapterSources = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sources);
         dataAdapterSources.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_source.setAdapter(dataAdapterSources);
     }

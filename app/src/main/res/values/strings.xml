@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">HttpURLConnectionExample</string>
     <string name="record_not_added">Record not added.</string>
+    <string name="lead">Lead</string>
+    <string name="source">Source:</string>
+    <string name="Source">Source</string>
+    <string name="status">Status:</string>
+    <string name="Status">Status</string>
+    <string name="reason_disqualified">Reason Disqualified:</string>
+    <string name="reason_disqualified_UI">Reason Disqualified</string>
+    <string name="type_UI">Type:</string>
+    <string name="type">Type</string>
+    <string name="linkedin">LinkedIn:</string>
+    <string name="linkedin_UI">LinkedIn</string>
+    <string name="role">Role:</string>
+    <string name="role_text">Role</string>
+    <string name="rating">Rating:</string>
+    <string name="rating_text">Rating</string>
+    <string name="edit">Edit</string>
 </resources>

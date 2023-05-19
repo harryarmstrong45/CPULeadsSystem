@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -17,7 +18,7 @@
             android:id="@+id/lead_title_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lead"
+            android:text="@string/lead"
             android:textAlignment="center"
             android:textColor="#333333"
             android:textSize="26sp"
@@ -41,7 +42,7 @@
             android:id="@+id/source_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Source:"
+            android:text="@string/source"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -51,7 +52,7 @@
             android:layout_width="216dp"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Source"
+            android:text="@string/Source"
             android:textColor="#333333"
             android:textSize="14sp" />
     </LinearLayout>
@@ -72,7 +73,7 @@
             android:id="@+id/status_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status:"
+            android:text="@string/status"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -82,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Status"
+            android:text="@string/Status"
             android:textColor="#333333"
             android:textSize="14sp" />
     </LinearLayout>
@@ -103,7 +104,7 @@
             android:id="@+id/reason_disqualified_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reason Disqualified:"
+            android:text="@string/reason_disqualified"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -113,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Reason Disqualified"
+            android:text="@string/reason_disqualified_UI"
             android:textColor="#333333"
             android:textSize="14sp" />
 
@@ -135,7 +136,7 @@
             android:id="@+id/type_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type:"
+            android:text="@string/type_UI"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -145,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Type"
+            android:text="@string/type"
             android:textColor="#333333"
             android:textSize="14sp" />
 
@@ -167,7 +168,7 @@
             android:id="@+id/linkedin_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LinkedIn:"
+            android:text="@string/linkedin"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -177,7 +178,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="LinkedIn"
+            android:text="@string/linkedin_UI"
             android:textColor="#333333"
             android:textSize="14sp" />
 
@@ -199,7 +200,7 @@
             android:id="@+id/role_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Role:"
+            android:text="@string/role"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -209,7 +210,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Role"
+            android:text="@string/role_text"
             android:textColor="#333333"
             android:textSize="14sp" />
 
@@ -231,7 +232,7 @@
             android:id="@+id/rating_title_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating:"
+            android:text="@string/rating"
             android:textColor="#333333"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -241,7 +242,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:text="Rating"
+            android:text="@string/rating_text"
             android:textColor="#333333"
             android:textSize="14sp" />
 
@@ -252,13 +253,14 @@
         android:layout_width="342dp"
         android:layout_height="46dp"
         android:layout_margin="5dp"
-        android:text="Edit" />
+        android:text="@string/edit" />
 
     <Button
         android:id="@+id/button_convert"
         android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="Convert to Account" />
+        android:text="Convert to Account"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

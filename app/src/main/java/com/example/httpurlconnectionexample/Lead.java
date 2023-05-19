@@ -30,7 +30,9 @@ public class Lead implements Serializable {
      @param rating The rating of the lead.
      @param company_id The ID of the company associated with the lead.
      */
-    public Lead(String id, String source, String status, String reason_disqualified, String type, String vendor_id, String linkedin, String role, String rating, String company_id) {
+    public Lead(String id, String source, String status,
+                String reason_disqualified, String type, String vendor_id, String linkedin,
+                String role, String rating, String company_id) {
         this.id = id;
         this.source = source;
         this.status = status;

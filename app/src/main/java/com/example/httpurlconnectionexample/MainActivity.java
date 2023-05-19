@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton fab;
 
-    /**
-     * Resumes the activity after it has been tabbed out off or stopped in anyway
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * Resumes the activity after it has been tabbed out off or stopped in anyway
+     */
     public void onResume() {
         super.onResume();
         ViewLeads();
